@@ -2,6 +2,8 @@ tronrealm
 
 In the effort to make a Tron-based world, I created a mod that added Tron-style blocks to the wonderfully voxel world we have. It wasn't long before it was pointed out to me that, although Tron fits well in the world of Minetest, it doesn't fit with the other textures. After a little thought, and seeing another realm mod, I had the idea for this, the Tron realm. It wasn't long before I started modifying the code for nether to see if I could generate a portal to the "Tron realm." Then I mentioned the idea to paramat to see if it was possible to create a flat area inside the realm to be representitive of "the grid." Paramat was the gratious enough to supply an entire mapgen for the realm, which is now used, with slight parameter tweaking. 
 
+each mod is licensed individually
+
 credits go to:
 
 paramat for: thegrid (mapgen)
