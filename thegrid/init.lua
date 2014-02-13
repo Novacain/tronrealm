@@ -7,7 +7,7 @@
 
 local YMIN = 5000 -- Approximate lower and upper realm limits
 local YMAX = 7000
-local TERCEN = 6888 -- Terrain centre, average surface level
+local TERCEN = 6808 -- Terrain centre, average surface level
 local TERSCA = 64 -- Terrain scale, approximate maximum height of hills
 local BLEND = 160 -- Flat to rough blend distance
 
