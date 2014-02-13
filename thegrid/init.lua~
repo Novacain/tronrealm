@@ -67,25 +67,25 @@ minetest.register_on_generated(function(minp, maxp, seed)
 		for y = y0, y1 do -- for each x row progressing upwards
 			local vi = area:index(x0, y, z) -- get voxel index for first node in x row
 			for x = x0, x1 do -- for each node do
-				local nodrad = math.sqrt((x + 32) ^ 2 + (z + 32) ^ 2)
+				local nodrad = math.sqrt((x - 8) ^ 2 + (z - 8) ^ 2)
 				local grad = (TERCEN - y) / TERSCA
 				local namp
-				if nodrad > 400 + BLEND then
+				if nodrad > 360 + BLEND then
 					namp = 1
-				elseif nodrad < 400 then
+				elseif nodrad < 360 then
 					namp = 0
 				else
-					namp = (nodrad - 400) / BLEND
+					namp = (nodrad - 360) / BLEND
 				end
 				local density = nvals_terrain[ni] * namp + grad
 				if namp == 0 and y == TERCEN then
 					if chux >= -2 and chux <= 0 and chuz >= -2 and chuz <= 0 then
 						data[vi] = c_tile
-					elseif chux >= -2 and chux <= 0 and chuz >= 0 and chuz <= 2 then
+					elseif chux >= -2 and chux <= 0 and chuz >= 1 and chuz <= 3 then
 						data[vi] = c_tileor
-					elseif chux >= 0 and chux <= 2 and chuz >= -2 and chuz <= -0 then
+					elseif chux >= 1 and chux <= 3 and chuz >= -2 and chuz <= 0 then
 						data[vi] = c_tilebl
-					elseif chux >= 0 and chux <= 2 and chuz >= 0 and chuz <= 2 then
+					elseif chux >= 1 and chux <= 3 and chuz >= 1 and chuz <= 3 then
 						data[vi] = c_tilegr
 					else
 						data[vi] = c_tronstone
