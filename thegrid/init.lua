@@ -1,0 +1,110 @@
+-- thegrid 0.2.0 by paramat
+-- For latest stable Minetest and back to 0.4.8
+-- Depends default
+-- License: code WTFPL
+
+-- Parameters
+
+local YMIN = 5000 -- Approximate lower and upper realm limits
+local YMAX = 7000
+local TERCEN = 6888 -- Terrain centre, average surface level
+local TERSCA = 64 -- Terrain scale, approximate maximum height of hills
+local BLEND = 160 -- Flat to rough blend distance
+
+-- 3D noise for terrain
+
+local np_terrain = {
+	offset = 0,
+	scale = 1,
+	spread = {x=256, y=128, z=256},
+	seed = 5900033,
+	octaves = 5,
+	persist = 0.63
+}
+
+-- Stuff
+
+thegrid = {}
+
+-- On generated function
+
+minetest.register_on_generated(function(minp, maxp, seed)
+	if minp.y < YMIN or maxp.y > YMAX then
+		return
+	end
+
+	local t1 = os.clock()
+	local x1 = maxp.x
+	local y1 = maxp.y
+	local z1 = maxp.z
+	local x0 = minp.x
+	local y0 = minp.y
+	local z0 = minp.z
+	local chux = (x0 + 32) / 80
+	local chuz = (z0 + 32) / 80
+	
+	print ("[thegrid] chunk minp ("..x0.." "..y0.." "..z0..")")
+	
+	local vm, emin, emax = minetest.get_mapgen_object("voxelmanip")
+	local area = VoxelArea:new{MinEdge=emin, MaxEdge=emax}
+	local data = vm:get_data()
+	
+	local c_air = minetest.get_content_id("air")
+	local c_tronstone = minetest.get_content_id("tronblocks:stone")
+	local c_tile = minetest.get_content_id("tronblocks:tile")
+	local c_tileor = minetest.get_content_id("tronblocks:tile_orange")
+	local c_tilebl = minetest.get_content_id("tronblocks:tile_blue")
+	local c_tilegr = minetest.get_content_id("tronblocks:tile_green")
+					
+	local sidelen = x1 - x0 + 1
+	local chulens = {x=sidelen, y=sidelen, z=sidelen}
+	local minpos = {x=x0, y=y0, z=z0}
+
+	local nvals_terrain = minetest.get_perlin_map(np_terrain, chulens):get3dMap_flat(minpos)
+
+	local ni = 1
+	for z = z0, z1 do -- for each xy plane progressing northwards
+		for y = y0, y1 do -- for each x row progressing upwards
+			local vi = area:index(x0, y, z) -- get voxel index for first node in x row
+			for x = x0, x1 do -- for each node do
+				local nodrad = math.sqrt((x + 32) ^ 2 + (z + 32) ^ 2)
+				local grad = (TERCEN - y) / TERSCA
+				local namp
+				if nodrad > 400 + BLEND then
+					namp = 1
+				elseif nodrad < 400 then
+					namp = 0
+				else
+					namp = (nodrad - 400) / BLEND
+				end
+				local density = nvals_terrain[ni] * namp + grad
+				if namp == 0 and y == TERCEN then
+					if chux >= -2 and chux <= 0 and chuz >= -2 and chuz <= 0 then
+						data[vi] = c_tile
+					elseif chux >= -2 and chux <= 0 and chuz >= 0 and chuz <= 2 then
+						data[vi] = c_tileor
+					elseif chux >= 0 and chux <= 2 and chuz >= -2 and chuz <= -0 then
+						data[vi] = c_tilebl
+					elseif chux >= 0 and chux <= 2 and chuz >= 0 and chuz <= 2 then
+						data[vi] = c_tilegr
+					else
+						data[vi] = c_tronstone
+					end
+				elseif density >= 0 then
+					data[vi] = c_tronstone
+				else
+					data[vi] = c_air
+				end
+				ni = ni + 1 -- increment perlinmap noise index
+				vi = vi + 1 -- increment voxel index along x row
+			end
+		end
+	end
+	
+	vm:set_data(data)
+	vm:set_lighting({day=0, night=0})
+	vm:calc_lighting()
+	vm:write_to_map(data)
+	local chugent = math.ceil((os.clock() - t1) * 1000)
+	print ("[thegrid] "..chugent.." ms")
+end)
