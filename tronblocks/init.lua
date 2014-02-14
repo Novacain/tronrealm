@@ -1106,14 +1106,14 @@ minetest.register_craft({
   output = "tronblocks:x_green 1",
   recipe = {
   {"dye:green",},
-  {"tronblocks:y",}
+  {"tronblocks:x",}
   }
 })
 minetest.register_craft({
   output = "tronblocks:x 1",
   recipe = {
   {"default:leaves",},
-  {"tronblocks:y_green",}
+  {"tronblocks:x_green",}
   }
 })
 minetest.register_craft({
