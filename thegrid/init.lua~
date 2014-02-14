@@ -7,7 +7,7 @@
 
 local YMIN = 5000 -- Approximate lower and upper realm limits
 local YMAX = 7000
-local TERCEN = 6888 -- Terrain centre, average surface level
+local TERCEN = 6808 -- Terrain centre, average surface level
 local TERSCA = 64 -- Terrain scale, approximate maximum height of hills
 local BLEND = 160 -- Flat to rough blend distance
 
@@ -70,12 +70,12 @@ minetest.register_on_generated(function(minp, maxp, seed)
 				local nodrad = math.sqrt((x - 8) ^ 2 + (z - 8) ^ 2)
 				local grad = (TERCEN - y) / TERSCA
 				local namp
-				if nodrad > 360 + BLEND then
+				if nodrad > 400 + BLEND then
 					namp = 1
-				elseif nodrad < 360 then
+				elseif nodrad < 400 then
 					namp = 0
 				else
-					namp = (nodrad - 360) / BLEND
+					namp = (nodrad - 400) / BLEND
 				end
 				local density = nvals_terrain[ni] * namp + grad
 				if namp == 0 and y == TERCEN then

@@ -67,15 +67,15 @@ minetest.register_on_generated(function(minp, maxp, seed)
 		for y = y0, y1 do -- for each x row progressing upwards
 			local vi = area:index(x0, y, z) -- get voxel index for first node in x row
 			for x = x0, x1 do -- for each node do
-				local nodrad = math.sqrt((x - 8) ^ 2 + (z - 8) ^ 2)
+				local nodrad = math.sqrt((x - 48) ^ 2 + (z - 48) ^ 2)
 				local grad = (TERCEN - y) / TERSCA
 				local namp
-				if nodrad > 400 + BLEND then
+				if nodrad > 342 + BLEND then
 					namp = 1
-				elseif nodrad < 400 then
+				elseif nodrad < 342 then
 					namp = 0
 				else
-					namp = (nodrad - 400) / BLEND
+					namp = (nodrad - 342) / BLEND
 				end
 				local density = nvals_terrain[ni] * namp + grad
 				if namp == 0 and y == TERCEN then

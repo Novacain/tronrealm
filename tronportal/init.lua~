@@ -1,5 +1,5 @@
 -- Minetest 0.4 Mod: tronportal
-local TRON_DEPTH = 6801
+local TRON_DEPTH = 6810
 
 minetest.register_node("tronportal:portal", {
 	description = "Tron Portal",
