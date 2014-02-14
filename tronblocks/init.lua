@@ -12,6 +12,14 @@ minetest.register_node("tronblocks:stone", {
   sounds = default.node_sound_wood_defaults(),
   drop = "tronblocks:stone 2",
 })
+minetest.register_node("tronblocks:stone_black", {
+  description = ("Black Tron Stone"),
+  tiles = {"tronblocks_stone_black.png"},
+  groups = {cracky=3,oddly_breakable_by_hand=2},
+  light_source = 5,
+  sounds = default.node_sound_wood_defaults(),
+  drop = "tronblocks:stone 2",
+})
 minetest.register_node("tronblocks:glow_box", {
   description = ("Tron Glow Box"),
   tiles = {"tronblocks_glow_box.png"},
@@ -193,6 +201,46 @@ minetest.register_node("tronblocks:x_blue", {
 minetest.register_node("tronblocks:x_green", {
   description = ("Green Tron X"),
   tiles = {"tronblocks_x_green.png"},
+  groups = {cracky=3,oddly_breakable_by_hand=2},
+  light_source = 10,
+  sounds = default.node_sound_wood_defaults(),
+})
+minetest.register_node("tronblocks:y", {
+  description = ("Tron Y"),
+  tiles = {"tronblocks_fy.png", "tronblocks_y.png", 
+	   "tronblocks_diagonal.png", "tronblocks_diagonalr.png", 
+	   "tronblocks_fy.png", "tronblocks_y.png", },
+  paramtype2 = "facedir",
+  groups = {cracky=3,oddly_breakable_by_hand=2},
+  light_source = 10,
+  sounds = default.node_sound_wood_defaults(),
+})
+minetest.register_node("tronblocks:y_orange", {
+  description = ("Orange Tron Y"),
+  tiles = {"tronblocks_fy_orange.png", "tronblocks_y_orange.png", 
+	   "tronblocks_diagonal_orange.png", "tronblocks_diagonalr_orange.png", 
+	   "tronblocks_fy_orange.png", "tronblocks_y_orange.png",},
+  paramtype2 = "facedir",
+  groups = {cracky=3,oddly_breakable_by_hand=2},
+  light_source = 10,
+  sounds = default.node_sound_wood_defaults(),
+})
+minetest.register_node("tronblocks:y_blue", {
+  description = ("Blue Tron Y"),
+  tiles = {"tronblocks_fy_blue.png", "tronblocks_y_blue.png", 
+	   "tronblocks_diagonal_blue.png", "tronblocks_diagonalr_blue.png", 
+	   "tronblocks_fy_blue.png", "tronblocks_y_blue.png", },
+  paramtype2 = "facedir",
+  groups = {cracky=3,oddly_breakable_by_hand=2},
+  light_source = 10,
+  sounds = default.node_sound_wood_defaults(),
+})
+minetest.register_node("tronblocks:y_green", {
+  description = ("Green Tron Y"),
+  tiles = {"tronblocks_fy_green.png", "tronblocks_y_green.png", 
+	   "tronblocks_diagonal_green.png", "tronblocks_diagonalr_green.png", 
+	   "tronblocks_fy_green.png", "tronblocks_y_green.png", },
+  paramtype2 = "facedir",
   groups = {cracky=3,oddly_breakable_by_hand=2},
   light_source = 10,
   sounds = default.node_sound_wood_defaults(),
@@ -1058,20 +1106,68 @@ minetest.register_craft({
   output = "tronblocks:x_green 1",
   recipe = {
   {"dye:green",},
-  {"tronblocks:x",}
+  {"tronblocks:y",}
   }
 })
 minetest.register_craft({
   output = "tronblocks:x 1",
   recipe = {
   {"default:leaves",},
-  {"tronblocks:x_green",}
+  {"tronblocks:y_green",}
+  }
+})
+minetest.register_craft({
+  output = "tronblocks:y 1",
+  recipe = {
+  {"tronblocks:x",}
+  }
+})
+minetest.register_craft({
+  output = "tronblocks:y_orange 1",
+  recipe = {
+  {"dye:orange",},
+  {"tronblocks:y",}
+  }
+})
+minetest.register_craft({
+  output = "tronblocks:y 1",
+  recipe = {
+  {"default:leaves",},
+  {"tronblocks:y_orange",}
+  }
+})
+minetest.register_craft({
+  output = "tronblocks:y_blue 1",
+  recipe = {
+  {"dye:blue",},
+  {"tronblocks:y",}
+  }
+})
+minetest.register_craft({
+  output = "tronblocks:y 1",
+  recipe = {
+  {"default:leaves",},
+  {"tronblocks:y_blue",}
+  }
+})
+minetest.register_craft({
+  output = "tronblocks:y_green 1",
+  recipe = {
+  {"dye:green",},
+  {"tronblocks:y",}
+  }
+})
+minetest.register_craft({
+  output = "tronblocks:y 1",
+  recipe = {
+  {"default:leaves",},
+  {"tronblocks:y_green",}
   }
 })
 minetest.register_craft({
   output = "tronblocks:tile 1",
   recipe = {
-  {"tronblocks:x",}
+  {"tronblocks:y",}
   }
 })
 minetest.register_craft({

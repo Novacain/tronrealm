@@ -315,9 +315,9 @@ minetest.register_node(":tronblocks:stone", {
 	end,
 })
 
-minetest.register_craftitem(":default:mese_crystal_fragment", {
-	description = "Mese Crystal Fragment",
-	inventory_image = "default_mese_crystal_fragment.png",
+minetest.register_craftitem(":tronportal:bit", {
+	description = "Bit",
+	inventory_image = "tronportal_bit.png",
 	on_place = function(stack,_, pt)
 		if pt.under and minetest.env:get_node(pt.under).name == "tronblocks:stone" then
 			local done = make_portal(pt.under)
@@ -332,26 +332,41 @@ minetest.register_craftitem(":default:mese_crystal_fragment", {
 minetest.register_craft({
   output = "dye:white 20",
   recipe = {
-  {"tronblocks:glow_box",}
+  {"tronblocks:glow_box"},
   }
 })
 minetest.register_craft({
   output = "dye:orange 20",
   recipe = {
-  {"tronblocks:glow_box_orange",}
+  {"tronblocks:glow_box_orange"},
   }
 })
 minetest.register_craft({
   output = "dye:blue 20",
   recipe = {
-  {"tronblocks:glow_box_blue",}
-  }
-})minetest.register_craft({
-  output = "dye:green 20",
-  recipe = {
-  {"tronblocks:glow_box_green",}
+  {"tronblocks:glow_box_blue"},
   }
 })
+minetest.register_craft({
+  output = "dye:green 20",
+  recipe = {
+  {"tronblocks:glow_box_green"},
+  }
+})
+minetest.register_craft({
+  output = "tronportal:bit 8",
+  recipe = {
+  {"tronblocks:stone", "", "tronblocks:stone"},
+  }
+})
+minetest.register_craft({
+  output = "tronblocks:stone 1",
+  recipe = {
+  {"tronportal:bit", "tronportal:bit"},
+  {"tronportal:bit", "tronportal:bit"},
+  }
+})
+
 local function replace(old, new)
 	for i=1,8 do
 		minetest.register_ore({
