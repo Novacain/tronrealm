@@ -820,11 +820,33 @@ minetest.register_node("tronblocks:zero_green", {
   light_source = 10,
   sounds = default.node_sound_wood_defaults(),
 })
+--crafts
 minetest.register_craft({
   output = "tronblocks:stone 1",
   recipe = {
   {"default:obsidian_shard",},
   {"default:stone",}
+  }
+})
+minetest.register_craft({
+  output = "tronblocks:stone_black 1",
+  recipe = {
+  {"dye:black",},
+  {"tronblocks:stone",}
+  }
+})
+--adding recipe for black dye
+minetest.register_craft({
+  output = "dye:black 4",
+  recipe = {
+  {"default:coal_lump",}
+  }
+})
+minetest.register_craft({
+  output = "tronblocks:stone 1",
+  recipe = {
+  {"default:leaves",},
+  {"tronblocks:stone_black",}
   }
 })
 minetest.register_craft({
