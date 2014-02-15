@@ -1,14 +1,15 @@
 --[[
   TronBlocks: A series of blocks to help build a Tron environment
 ]]
---The code follows a patter of colors as follows: white (plain), orange, blue, then green. the code is the same between them, except for the colors.
+--[[
+  The code follow a patter of colors as follows: white (plain), orange, blue, then green. the code is the same between them, except for the colors.
+]]
 minetest.register_node("tronblocks:stone", {
   description = ("Tron Stone"),
   tiles = {"tronblocks_stone.png"},
   groups = {cracky=3,oddly_breakable_by_hand=2},
   light_source = 5,
   sounds = default.node_sound_wood_defaults(),
-  is_ground_content = true,
   drop = "tronblocks:stone 2",
 })
 minetest.register_node("tronblocks:stone_black", {
@@ -23,28 +24,28 @@ minetest.register_node("tronblocks:glow_box", {
   description = ("Tron Glow Box"),
   tiles = {"tronblocks_glow_box.png"},
   groups = {cracky=3,oddly_breakable_by_hand=2},
-  light_source = 14,
+  light_source = 15,
   sounds = default.node_sound_wood_defaults(),
 })
 minetest.register_node("tronblocks:glow_box_orange", {
   description = ("Orange Tron Glow Box"),
   tiles = {"tronblocks_glow_box_orange.png"},
   groups = {cracky=3,oddly_breakable_by_hand=2},
-  light_source = 14,
+  light_source = 15,
   sounds = default.node_sound_wood_defaults(),
 })
 minetest.register_node("tronblocks:glow_box_blue", {
   description = ("Blue Tron Glow Box"),
   tiles = {"tronblocks_glow_box_blue.png"},
   groups = {cracky=3,oddly_breakable_by_hand=2},
-  light_source = 14,
+  light_source = 15,
   sounds = default.node_sound_wood_defaults(),
 })
 minetest.register_node("tronblocks:glow_box_green", {
   description = ("Green Tron Glow Box"),
   tiles = {"tronblocks_glow_box_green.png"},
   groups = {cracky=3,oddly_breakable_by_hand=2},
-  light_source = 14,
+  light_source = 15,
   sounds = default.node_sound_wood_defaults(),
 })
 minetest.register_node("tronblocks:arrow", {
@@ -496,7 +497,9 @@ minetest.register_node("tronblocks:diagonal_green", {
   light_source = 10,
   sounds = default.node_sound_wood_defaults(),
 })
---numerals are the second craftable group. 
+--[[
+numerals are the second craftable group. 
+]]
 minetest.register_node("tronblocks:one", {
   description = ("Tron One"),
   tiles = {"tronblocks_one.png"},

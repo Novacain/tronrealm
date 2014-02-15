@@ -1,5 +1,5 @@
 -- Minetest 0.4 Mod: tronportal
-local TRON_DEPTH = 6801
+local TRON_DEPTH = 7001 -- needs to be 1 node above TERCEN
 
 minetest.register_node("tronportal:portal", {
 	description = "Tron Portal",
@@ -260,7 +260,7 @@ minetest.register_node(":tronblocks:stone", {
 	is_ground_content = true,
 	sounds = default.node_sound_wood_defaults(),
 	groups = {cracky=3,oddly_breakable_by_hand=2},
-	light_source = 2,
+	light_source = 5,
 	drop = "tronblocks:stone 2",
 	
 	on_destruct = function(pos)
@@ -329,6 +329,7 @@ minetest.register_craftitem(":tronportal:bit", {
 	end,
 })
 
+-- dye recipes "hacks"
 minetest.register_craft({
   output = "dye:white 20",
   recipe = {
@@ -353,12 +354,14 @@ minetest.register_craft({
   {"tronblocks:glow_box_green"},
   }
 })
+--remove in public servers if you want to prevent "portal griefing"
 minetest.register_craft({
   output = "tronportal:bit 8",
   recipe = {
   {"tronblocks:stone", "", "tronblocks:stone"},
   }
 })
+--only need this for the one above it
 minetest.register_craft({
   output = "tronblocks:stone 1",
   recipe = {

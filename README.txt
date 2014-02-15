@@ -16,3 +16,5 @@ As a note, there are a few features that may seem slightly "hacky" that you may 
 First, tronblocks has the feature that "Tron Stone" yields two nodes when dug. I felt this represented the "resources" of a digital world well. the line is easy to spot in the code of the tronblocks mod if you wish to remove it.
 
 Second, included in the tronportal mod are some crafts that allow glowboxes to be crafted into 20 dyes of the respective color. This is what I see as being a potential problem in servers, as it allows unendless green, blue, orange, and white dyes if you have tronstones and torches. These craft recipes are included near the bottom. I hope I have made this clear enough for you to use it as desired. 
+
+Third, when a portal is generated in the realm, it can destroy some nodes. this can be solved by removing the craft recipe for tronportal:bit. it can then only be obtained by those with "give" or creative, and so can be controlled.

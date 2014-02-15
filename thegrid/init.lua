@@ -1,26 +1,49 @@
--- thegrid 0.2.0 by paramat
+-- thegrid 0.2.1 by paramat
 -- For latest stable Minetest and back to 0.4.8
 -- Depends default
 -- License: code WTFPL
 
 -- Parameters
 
-local YMIN = 5000 -- Approximate lower and upper realm limits
-local YMAX = 7000
-local TERCEN = 6800 -- Terrain centre, average surface level
-local TERSCA = 64 -- Terrain scale, approximate maximum height of hills
-local BLEND = 160 -- Flat to rough blend distance
+local YMIN = 5000 -- Approximate base of realm
+local YMAX = 9000 -- Approximate top of atmosphere
+local TERCEN = 7000 -- Terrain centre y, average surface level
+local TERSCA = 128 -- Terrain scale in nodes, controls height of mountains
+local BLEND = 40 -- Flat to rough blend distance in nodes
+local FLATRAD = 345 -- Flat area radius in nodes
+
+-- White grid limits in units of chunk (chunk = 80 nodes)
+local WXMIN = -3
+local WXMAX = -1
+local WZMIN = -3
+local WZMAX = -1
+-- Orange grid
+local OXMIN = -3
+local OXMAX = -1
+local OZMIN = 0
+local OZMAX = 2
+-- Blue grid
+local BXMIN = 0
+local BXMAX = 2
+local BZMIN = -3
+local BZMAX = -1
+-- Green grid
+local GXMIN = 0
+local GXMAX = 2
+local GZMIN = 0
+local GZMAX = 2
 
 -- 3D noise for terrain
 
 local np_terrain = {
 	offset = 0,
 	scale = 1,
-	spread = {x=256, y=128, z=256},
-	seed = 5900033,
-	octaves = 5,
-	persist = 0.63
-}
+	spread = {x=512, y=256, z=512}, -- scale of largest structures
+	seed = -230023, -- any number, defines the terrain pattern like a seed growing into a plant
+	octaves = 6, -- level of finest detail, 5 = smoother
+	persist = 0.63 -- balance of fine detail relative to coarse detail 
+}			-- 0.4 = smooth, 0.6 = rough and Minetest default 
+			-- 0.67 = science fiction, more overhangs and floating rocks
 
 -- Stuff
 
@@ -40,7 +63,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	local x0 = minp.x
 	local y0 = minp.y
 	local z0 = minp.z
-	local chux = (x0 + 32) / 80
+	local chux = (x0 + 32) / 80 -- co-ordinates in chunks, chunk zero is x/z = -32 to x/z = 47
 	local chuz = (z0 + 32) / 80
 	
 	print ("[thegrid] chunk minp ("..x0.." "..y0.." "..z0..")")
@@ -67,25 +90,26 @@ minetest.register_on_generated(function(minp, maxp, seed)
 		for y = y0, y1 do -- for each x row progressing upwards
 			local vi = area:index(x0, y, z) -- get voxel index for first node in x row
 			for x = x0, x1 do -- for each node do
-				local nodrad = math.sqrt((x - 48) ^ 2 + (z - 48) ^ 2)
+				local nodrad = math.sqrt((x + 32) ^ 2 + (z + 32) ^ 2) -- centre is at -32 -32
 				local grad = (TERCEN - y) / TERSCA
 				local namp
-				if nodrad > 342 + BLEND then
+				if nodrad > FLATRAD + BLEND then
 					namp = 1
-				elseif nodrad < 342 then
+				elseif nodrad < FLATRAD then
 					namp = 0
 				else
-					namp = (nodrad - 342) / BLEND
+					namp = (1 - math.cos((nodrad - FLATRAD) / BLEND * math.pi)) / 2
 				end
-				local density = nvals_terrain[ni] * namp + grad
+				local n_terrain = nvals_terrain[ni]
+				local density = (n_terrain ^ 2 + n_terrain * 0.5) * namp + grad
 				if namp == 0 and y == TERCEN then
-					if chux >= -2 and chux <= 0 and chuz >= -2 and chuz <= 0 then
+					if chux >= WXMIN and chux <= WXMAX and chuz >= WZMIN and chuz <= WZMAX then
 						data[vi] = c_tile
-					elseif chux >= -2 and chux <= 0 and chuz >= 1 and chuz <= 3 then
+					elseif chux >= OXMIN and chux <= OXMAX and chuz >= OZMIN and chuz <= OZMAX then
 						data[vi] = c_tileor
-					elseif chux >= 1 and chux <= 3 and chuz >= -2 and chuz <= 0 then
+					elseif chux >= BXMIN and chux <= BXMAX and chuz >= BZMIN and chuz <= BZMAX then
 						data[vi] = c_tilebl
-					elseif chux >= 1 and chux <= 3 and chuz >= 1 and chuz <= 3 then
+					elseif chux >= GXMIN and chux <= GXMAX and chuz >= GZMIN and chuz <= GZMAX then
 						data[vi] = c_tilegr
 					else
 						data[vi] = c_tronstone
