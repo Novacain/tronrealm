@@ -202,7 +202,7 @@ minetest.register_node("tronblocks:x_green", {
 })
 minetest.register_node("tronblocks:y", {
   description = ("Tron Y"),
-  tiles = {"tronblocks_fy.png", "tronblocks_y.png", 
+  tiles = {"tronblocks_fy.png", "tronblocks_fy.png", 
 	   "tronblocks_diagonal.png", "tronblocks_diagonalr.png", 
 	   "tronblocks_fy.png", "tronblocks_y.png", },
   paramtype2 = "facedir",
@@ -212,7 +212,7 @@ minetest.register_node("tronblocks:y", {
 })
 minetest.register_node("tronblocks:y_orange", {
   description = ("Orange Tron Y"),
-  tiles = {"tronblocks_fy_orange.png", "tronblocks_y_orange.png", 
+  tiles = {"tronblocks_fy_orange.png", "tronblocks_fy_orange.png", 
 	   "tronblocks_diagonal_orange.png", "tronblocks_diagonalr_orange.png", 
 	   "tronblocks_fy_orange.png", "tronblocks_y_orange.png",},
   paramtype2 = "facedir",
@@ -222,7 +222,7 @@ minetest.register_node("tronblocks:y_orange", {
 })
 minetest.register_node("tronblocks:y_blue", {
   description = ("Blue Tron Y"),
-  tiles = {"tronblocks_fy_blue.png", "tronblocks_y_blue.png", 
+  tiles = {"tronblocks_fy_blue.png", "tronblocks_fy_blue.png", 
 	   "tronblocks_diagonal_blue.png", "tronblocks_diagonalr_blue.png", 
 	   "tronblocks_fy_blue.png", "tronblocks_y_blue.png", },
   paramtype2 = "facedir",
@@ -232,7 +232,7 @@ minetest.register_node("tronblocks:y_blue", {
 })
 minetest.register_node("tronblocks:y_green", {
   description = ("Green Tron Y"),
-  tiles = {"tronblocks_fy_green.png", "tronblocks_y_green.png", 
+  tiles = {"tronblocks_fy_green.png", "tronblocks_fy_green.png", 
 	   "tronblocks_diagonal_green.png", "tronblocks_diagonalr_green.png", 
 	   "tronblocks_fy_green.png", "tronblocks_y_green.png", },
   paramtype2 = "facedir",
@@ -394,7 +394,7 @@ minetest.register_node("tronblocks:parallelr_green", {
 })
 minetest.register_node("tronblocks:line", {
   description = ("Tron Line"),
-  tiles = {"tronblocks_line.png"},
+  tiles = {"tronblocks_vline.png"},
   paramtype2 = "facedir",
   groups = {cracky=3,oddly_breakable_by_hand=2},
   light_source = 10,
@@ -402,7 +402,7 @@ minetest.register_node("tronblocks:line", {
 })
 minetest.register_node("tronblocks:line_orange", {
   description = ("Orange Tron Line"),
-  tiles = {"tronblocks_line_orange.png"},
+  tiles = {"tronblocks_vline_orange.png"},
   paramtype2 = "facedir",
   groups = {cracky=3,oddly_breakable_by_hand=2},
   light_source = 10,
@@ -410,7 +410,7 @@ minetest.register_node("tronblocks:line_orange", {
 })
 minetest.register_node("tronblocks:line_blue", {
   description = ("Blue Tron Line"),
-  tiles = {"tronblocks_line_blue.png"},
+  tiles = {"tronblocks_vline_blue.png"},
   paramtype2 = "facedir",
   groups = {cracky=3,oddly_breakable_by_hand=2},
   light_source = 10,
@@ -418,7 +418,7 @@ minetest.register_node("tronblocks:line_blue", {
 })
 minetest.register_node("tronblocks:line_green", {
   description = ("Green Tron Line"),
-  tiles = {"tronblocks_line_green.png"},
+  tiles = {"tronblocks_vline_green.png"},
   paramtype2 = "facedir",
   groups = {cracky=3,oddly_breakable_by_hand=2},
   light_source = 10,
@@ -426,7 +426,7 @@ minetest.register_node("tronblocks:line_green", {
 })
 minetest.register_node("tronblocks:vline", {
   description = ("Tron Vertical Line"),
-  tiles = {"tronblocks_vline.png"},
+  tiles = {"tronblocks_line.png"},
   paramtype2 = "facedir",
   groups = {cracky=3,oddly_breakable_by_hand=2},
   light_source = 10,
@@ -434,7 +434,7 @@ minetest.register_node("tronblocks:vline", {
 })
 minetest.register_node("tronblocks:vline_orange", {
   description = ("Orange Tron Vertical Line"),
-  tiles = {"tronblocks_vline_orange.png"},
+  tiles = {"tronblocks_line_orange.png"},
   paramtype2 = "facedir",
   groups = {cracky=3,oddly_breakable_by_hand=2},
   light_source = 10,
@@ -442,7 +442,7 @@ minetest.register_node("tronblocks:vline_orange", {
 })
 minetest.register_node("tronblocks:vline_blue", {
   description = ("Blue Tron Vertical Line"),
-  tiles = {"tronblocks_vline_blue.png"},
+  tiles = {"tronblocks_line_blue.png"},
   paramtype2 = "facedir",
   groups = {cracky=3,oddly_breakable_by_hand=2},
   light_source = 10,
@@ -450,7 +450,7 @@ minetest.register_node("tronblocks:vline_blue", {
 })
 minetest.register_node("tronblocks:vline_green", {
   description = ("Green Tron vertical Line"),
-  tiles = {"tronblocks_vline_green.png"},
+  tiles = {"tronblocks_line_green.png"},
   paramtype2 = "facedir",
   groups = {cracky=3,oddly_breakable_by_hand=2},
   light_source = 10,
