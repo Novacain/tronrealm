@@ -813,3 +813,53 @@ minetest.register_node("tronblocks:zero_green", {
   light_source = 10,
   sounds = default.node_sound_wood_defaults(),
 })
+--Tron glass
+minetest.register_node("tronblocks:glass", {
+	description = ("Tron Glass"),
+	drawtype = "glasslike",
+	tiles = {"tronblocks_glass.png"},
+	inventory_image = minetest.inventorycube("tronblocks_glass.png"),
+	paramtype = "light",
+	sunlight_propagates = true,
+	light_source = 11,
+	walkable = false,
+	groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3},
+	sounds = default.node_sound_glass_defaults(),
+})
+minetest.register_node("tronblocks:glass_orange", {
+	description = ("Orange Tron Glass"),
+	drawtype = "glasslike",
+	tiles = {"tronblocks_glass_orange.png"},
+	inventory_image = minetest.inventorycube("tronblocks_glass_orange.png"),
+	paramtype = "light",
+	sunlight_propagates = true,
+	light_source = 11,
+	walkable = false,
+	groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3},
+	sounds = default.node_sound_glass_defaults(),
+})
+minetest.register_node("tronblocks:glass_blue", {
+	description = ("Blue Tron Glass"),
+	drawtype = "glasslike",
+	tiles = {"tronblocks_glass_blue.png"},
+	inventory_image = minetest.inventorycube("tronblocks_glass_blue.png"),
+	paramtype = "light",
+	sunlight_propagates = true,
+	light_source = 11,
+	walkable = false,
+	groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3},
+	sounds = default.node_sound_glass_defaults(),
+})
+minetest.register_node("tronblocks:glass_green", {
+	description = ("Green Tron Glass"),
+	drawtype = "glasslike",
+	tiles = {"tronblocks_glass_green.png"},
+	inventory_image = minetest.inventorycube("tronblocks_glass_green.png"),
+	paramtype = "light",
+	sunlight_propagates = true,
+	light_source = 11,
+	walkable = false,
+	groups = {snappy=2,cracky=3,oddly_breakable_by_hand=3},
+	sounds = default.node_sound_glass_defaults(),
+})
+

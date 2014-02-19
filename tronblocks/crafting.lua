@@ -1241,3 +1241,52 @@ minetest.register_craft({
   {"tronblocks:zero",}
   }
 })
+minetest.register_craft({
+  output = "tronblocks:glass 4",
+  recipe = {
+  {"tronblocks:glow_box",},
+  {"default:glass",}
+  }
+})
+minetest.register_craft({
+  output = "tronblocks:glass_orange 1",
+  recipe = {
+  {"dye:orange",},
+  {"tronblocks:glass",}
+  }
+})
+minetest.register_craft({
+  output = "tronblocks:glass 1",
+  recipe = {
+  {"default:leaves",},
+  {"tronblocks:glass_orange",}
+  }
+})
+minetest.register_craft({
+  output = "tronblocks:glass_blue 1",
+  recipe = {
+  {"dye:blue",},
+  {"tronblocks:glass",}
+  }
+})
+minetest.register_craft({
+  output = "tronblocks:glass 1",
+  recipe = {
+  {"default:leaves",},
+  {"tronblocks:glass_blue",}
+  }
+})
+minetest.register_craft({
+  output = "tronblocks:glass_green 1",
+  recipe = {
+  {"dye:green",},
+  {"tronblocks:glass",}
+  }
+})
+minetest.register_craft({
+  output = "tronblocks:glass 1",
+  recipe = {
+  {"default:leaves",},
+  {"tronblocks:glass_green",}
+  }
+})
